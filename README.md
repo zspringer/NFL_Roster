@@ -1,7 +1,7 @@
 # NFL_Roster
 Fantasy Football!!!
 
-![nfl roster](http://s12.postimg.org/nyvb34pvw/Screen_Shot_2015_09_14_at_5_40_38_PM.jpg)
+[NFL Roster](http://i61.tinypic.com/5nvwuq.png)
 
 1. Create a repository for My_Roster.
 2. Create an index.html file.
