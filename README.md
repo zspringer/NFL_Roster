@@ -1,9 +1,9 @@
 # NFL_Roster
 Fantasy Football!!!
 
-[NFL Roster](http://i61.tinypic.com/5nvwuq.png)
+![NFL Roster](http://i61.tinypic.com/5nvwuq.png)
 
-1. Create a repository for My_Roster.
+1. Create a repository for my-roster.
 2. Create an index.html file.
 3. Create an app.js file.
 4. Create a site.css file.
@@ -20,9 +20,9 @@ Fantasy Football!!!
   - display the player's position
   - display the player's number
 12. Create a from inside the "player-form" div
-13. Add an input field for Player Name, Position, and Number
+13. Add an input field for playerName, playerPosition, and playerJersey
 14. When the add button is pressed, it should automatically add a player to the Roster.
-15. Create a constructor for Player that accepts 3 arguments, Name, Position, Number.
+15. Create a constructor for Player that accepts 3 arguments, name, position, jersey.
 16. When the Add button is pressed, a new player is created and added to the Players array.
 17. Use JQuery to target the "player-roster" div, and append the player.
    
@@ -31,6 +31,5 @@ Fantasy Football!!!
   - The form should have the following fields
     - Player Name
     - Player Position
-    - Player Number
+    - Player Jersey
 3. I would like the players added to show up in the roster section after being added.
-
