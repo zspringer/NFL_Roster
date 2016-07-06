@@ -1,0 +1,52 @@
+.container {
+    padding-top: 30px;
+}
+
+/* GENERAL TEXT STYLING */
+
+body {
+    font-family: 'Play', sans-serif;
+}
+
+p {
+    font-size: 16px;
+}
+
+/* ROSTER */
+
+.player-card {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: #555;
+    color: #fafafa;
+}
+
+.player-card img {
+    max-width: 240px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.player-card h4 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.btn-remove {
+    display: block;
+    margin: 5px auto;
+}
+
+/* FORM */
+
+.player-form {
+    margin-top: 30px;
+}
+
+.player-form .panel-heading {
+    color: #041;
+}
+
