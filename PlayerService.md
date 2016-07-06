@@ -2,34 +2,34 @@
 #Players Service & Encapsulation
 ---
 
-We are going to briefly talk about one of the three pillars of object oreinted programming, Encapsulation.
-We discussed the important role it plays in software development, and how it promotes effecient maintainable code.
+We are going to briefly talk about one of the three pillars of object oriented programming, Encapsulation.
+We discussed the important role it plays in software development, and how it promotes efficient, maintainable code.
 
 Encapsulation is an Object Oriented Programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse. Data encapsulation led to the important OOP concept of data hiding.
 
-While the concept of Encapulation is very broad, and can be difficult to pull of completely we are attempting to break it down into a few basic principles.
+While the concept of Encapsulation is very broad, and can be difficult to pull off completely, we are attempting to break it down into a few basic principles.
 
 - Single Responsibility, or "One function, One job".
   - Do your best to ensure a function doesn't do too much. If it is doing too much
   try to separate(refactor) out each task into other smaller functions.
 
 - Encapsulate/WrapUp common behavior.
-  - If you have functions(methods) or data(properties) that are similar in behaviour, wrap them up into a single unit, using a class(constructor).
+  - If you have functions(methods) or data(properties) that are similar in behavior, wrap them up into a single unit, using a class(constructor).
   
 - "Keep your private parts private".
   - Use closure to keep functionality specific to an object within the object itself. 
 
-Now lets discuss how we are going to get player data from the CBS API and how we can encapsulate that data into it's own unit. Our proof of concept was very basic.
+Now let's discuss how we are going to get player data from the CBS API and how we can encapsulate that data into its own unit. Our proof of concept is very basic.
 
   - Retrieve player data from an external source.
     - Only load this data one time, then store it to a local variable.
   - Filter player data by certain properties such as Name, Position, Team, etc...
     - To make it simple we started with 2 basic functions.
       - getPlayersByTeam(teamName);
-        - this method recieves a name of a team, returns an array of all players on that team.  
+        - this method receives a name of a team and returns an array of all players on that team.  
       - getPlayersByPosition(position);
-        - this method recieves a players position, return an array of all players with that position.
-    - Each function relys on the data retrived from the external source.  
+        - this method receives a player's position and returns an array of all players with that position.
+    - Each function relies on the data retrieved from the external source.  
  
 Because every item in our proof of concept is similar in behavior, we will want to place everything inside a common unit. 
 Lets call it PlayersService. 
@@ -48,11 +48,11 @@ var PlayersService = function(){
   var playersData = [];
   
   this.getPlayersByTeam = function(teamName){
-    //return all an array of all players that match the given teamName.
+    //return an array of all players who match the given teamName.
   }
   
   this.getPlayersByPosition = function(position){
-    //return all an array of all players that match the given position.
+    //return an array of all players who match the given position.
   }
 } 
 ``` 
@@ -112,7 +112,7 @@ var PlayersService = function(endpointUri, callback){
       if(localData){
       	playerData = JSON.parse(localData);
       	return callback(); 
-      	//return will short circut the loadPlayersData function
+      	//return will short-circuit the loadPlayersData function
       	//this will prevent the code below from ever executing
       }
       
@@ -132,7 +132,7 @@ loadPlayersData(); //call the function above every time we create a new service
 } 
 ```
 
-And there you have it. A basic, easy to use Players Service. To make it work, we will go back to our main app.js and instantiate the PlayerService. The PlayerService is going out to make an async call we will want to make sure our page shows some sort of loader while we are waiting for the data to load. To accomplish this task we can setup a simple bool for loading and then flip that bool once the ready function is called by our player service.
+And there you have it. A basic, easy to use Players Service. To make it work, we will go back to our main app.js and instantiate the PlayerService. The PlayerService is going out to make an async call, and we will want to make sure our page shows some sort of loader while we are waiting for the data to load. To accomplish this task we can setup a simple bool for loading and then flip that bool once the ready function is called by our player service.
 
 ```javascript
 var loading = true; //Start the spinner
@@ -160,10 +160,10 @@ Happy CODING!
 In its simplest form, Array.filter is a way to filter a large array intto a smaller array. 
 
 Let's look at the following example of filtering an array using Array.forEach();
-In the exmples below, our goal is to filter on all the players on the team "SF".
+In the examples below, our goal is to filter a list of players, retaining only the players on the team "SF".
 ```javascript
 var playersData = [] //Assume this is a large collection of players.
-var filterdPlayers = [];
+var filteredPlayers = [];
 playersData.forEach(function(player){
     if(player.team === "SF"){ //check to see if they are on the team SF
       filteredPlayers.push(player); //if they are, add them to the array.
@@ -173,13 +173,13 @@ playersData.forEach(function(player){
 console.log(filteredPlayers); //this should be all players that are on SF.
 ```
 
-That's not too much code, and pretty easy to follow, however, javascript has an easier, cleaner way
+That's not too much code, and pretty easy to follow; however, JavaScript has an easier, cleaner way
 to filter arrays. This is where we use Array.filter() instead of Array.forEach().
 
 ```javascript
 var playersData = [] //Assume this is a large collection of players.
 
-var filterdPlayers = playersData.filter(function(player){ //replace forEach with filter.
+var filteredPlayers = playersData.filter(function(player){ //replace forEach with filter.
     if(player.team === "SF"){ //check to see if they are on the team SF
       return true; //instead of adding it to an array, just return true.
     }
@@ -191,6 +191,6 @@ console.log(filteredPlayers); //this should be all players that are on SF.
 The code is very similar, but we do not need to push any objects to a temporary array.
 Array.filter() works by looking at the response from the callback. If we return TRUE inside 
 the callback it will add the current item to the filtered list, if we return FALSE or nothing, 
-then it will excluded the current item from the filtered list.
+then it will exclude the current item from the filtered list.
 
-Note, it does not modify the original array, instead it creates a new one.
+Note, Array.filter() does not modify the original array; instead it creates a new one.
