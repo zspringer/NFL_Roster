@@ -2,7 +2,7 @@
 #Players Service & Encapsulation
 ---
 
-We are going to briefly talk about one of the three pillars of object oriented programming, Encapsulation.
+We have already briefly talked about one of the three pillars of object oriented programming, Encapsulation.
 We discussed the important role it plays in software development, and how it promotes efficient, maintainable code.
 
 Encapsulation is an Object Oriented Programming concept that binds together the data and functions that manipulate the data, and that keeps both safe from outside interference and misuse. Data encapsulation led to the important OOP concept of data hiding.
@@ -41,7 +41,7 @@ PlayersService is just a constructor.
   } 
 ```
 
-Looking back at our proof of concept, we know our service needs to have player data, and a few functions.
+Looking back at our proof of concept, we know our service needs to have player data, and a few functions. Let's put a few examples in just to get the ball rolling. We will eventually want to sort players somehow so adding in the ability to do this by team and by position might be a good start.
 
 ```javascript
 var PlayersService = function(){
@@ -58,7 +58,7 @@ var PlayersService = function(){
 ``` 
 
 Once we have the skeleton laid out, we can implement the functionality.
-We will use a new method called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">.filter()</a>.
+We will use a new method called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">.filter()</a>. Check out that link, and the additional content below for more details on filter.
 
 ```javascript
 var PlayersService = function(){
@@ -151,7 +151,13 @@ function ready(){
     
 ```
 
-Happy CODING!  
+Before you are turned loose there are a few things you will want to know about this API. First, it will give you back a ton of data, and not all of it comes how you would expect, nor is all of it usable. Since this is coming from a fantasy football API each team will have "players" that aren't actual people. 
+
+For example the Seahawks have a player with the name "Seahawks" and the position of "D" in a fantasy league this represents the entire defense, giving the player all the points racked up from the defence. It is up to you if you want to keep these "empty" players in your roster. 
+
+Additionally you will find some of the players pictures are different sizes or non-existant make sure that you have contingencies for such things.
+
+Good luck, and Happy Coding.
  
 ---
 
