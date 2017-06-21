@@ -19,6 +19,9 @@ While the concept of Encapsulation is very broad, and can be difficult to pull o
 - "Keep your private parts private".
   - Use closure to keep functionality specific to an object within the object itself. 
 
+#### REFACTOR TIME
+
+
 Now let's discuss how we are going to get player data from the CBS API and how we can encapsulate that data into its own unit. Our proof of concept is very basic.
 
   - Retrieve player data from an external source.
