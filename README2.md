@@ -167,11 +167,18 @@ Good luck, and Happy Coding.
 
 ### Points `Total Points: 20`
 
- - `5` Utilizes a PlayerController
- - `5` Utilizes a PlayerService
+ - `5` Utilizes a PlayerService & PlayerController
  - `5` Players can be filtered by Team
  - `5` Players can be filtered by Position
- 
+ - `2.5` Players can be added and removed from user team
+ - `2.5` User team data is persistent
+
+
+### Bonus
+  - Only one instance of a player on the team is allowed
+  - Teams have a max size 
+  - Only one player of each position
+  -
 ---
 
 #Array.Filter
