@@ -19,14 +19,14 @@ While the concept of Encapsulation is very broad, and can be difficult to pull o
 - "Keep your private parts private".
   - Use closure to keep functionality specific to an object within the object itself. 
 
-#### REFACTOR TIME
+#### REFACTOR TIME (You may want to comment out player creation at this time)
 
 
 Now let's discuss how we are going to get player data from the CBS API and how we can encapsulate that data into its own unit. Our proof of concept is very basic.
 
   - Retrieve player data from an external source.
     - Only load this data one time, then store it to a local variable.
-  - Filter player data by certain properties such as Name, Position, Team, etc...
+  - Filter player data by certain properties such as Name, Position, Team, etc... 
     - To make it simple we started with 2 basic functions.
       - getPlayersByTeam(teamName);
         - this method receives a name of a team and returns an array of all players on that team.  
@@ -111,9 +111,9 @@ var PlayersService = function(endpointUri, callback){
       //Ideally if a user has already used your site 
       //we can cut down on the load time by saving and pulling from localstorage 
       
-      var localData = localStorage.getItem('playerData');
+      var localData = localStorage.getItem('playersData');
       if(localData){
-      	playerData = JSON.parse(localData);
+      	playersData = JSON.parse(localData);
       	return callback(); 
       	//return will short-circuit the loadPlayersData function
       	//this will prevent the code below from ever executing
@@ -126,7 +126,7 @@ var PlayersService = function(endpointUri, callback){
           playersData = data.body.players;
           console.log('Player Data Ready')
           console.log('Writing Player Data to localStorage')
-          localStorage.setItem('playerData', JSON.stringify(playerData))
+          localStorage.setItem('playersData', JSON.stringify(playersData))
           console.log('Finished Writing Player Data to localStorage')
           callback()
         });
@@ -160,7 +160,17 @@ For example the Seahawks have a player with the name "Seahawks" and the position
 
 Additionally you will find some of the players pictures are different sizes or non-existant make sure that you have contingencies for such things.
 
+Once it is all set up feel free to re-integrate adding players, adding and removing players from your roster, etc.
+
 Good luck, and Happy Coding.
+
+
+### Points `Total Points: 20`
+
+ - `5` Utilizes a PlayerController
+ - `5` Utilizes a PlayerService
+ - `5` Players can be filtered by Team
+ - `5` Players can be filtered by Position
  
 ---
 
@@ -173,7 +183,7 @@ In the examples below, our goal is to filter a list of players, retaining only t
 ```javascript
 var playersData = [] //Assume this is a large collection of players.
 var filteredPlayers = [];
-playersData.forEach(function(player){
+playersData.forEach(function(player){    //on a for each, it takes in a function that's parameter is an single item from the array
     if(player.team === "SF"){ //check to see if they are on the team SF
       filteredPlayers.push(player); //if they are, add them to the array.
     }
