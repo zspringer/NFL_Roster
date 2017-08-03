@@ -19,9 +19,6 @@ While the concept of Encapsulation is very broad, and can be difficult to pull o
 - "Keep your private parts private".
   - Use closure to keep functionality specific to an object within the object itself. 
 
-#### REFACTOR TIME (You may want to comment out player creation at this time)
-
-
 Now let's discuss how we are going to get player data from the CBS API and how we can encapsulate that data into its own unit. Our proof of concept is very basic.
 
   - Retrieve player data from an external source.
@@ -84,8 +81,7 @@ var PlayersService = function(){
 ```
 
 Now we just need to write the function to get the player data from the API. And call
-that function every time we create a new Players Service. Since we don't want to hard code
-a url to the API in the service, we are accepting it as a constructor parameter.
+that function every time we create a new Players Service.
 
 ```javascript
 var PlayersService = function(endpointUri, callback){
@@ -120,6 +116,7 @@ var PlayersService = function(endpointUri, callback){
       }
       
       var url = "http://bcw-getter.herokuapp.com/?url=";
+      var endpointUri = "http://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
       var apiUrl = url + encodeURIComponent(endpointUri);
     
         $.getJSON(endpointUri, function(data){
@@ -165,20 +162,20 @@ Once it is all set up feel free to re-integrate adding players, adding and remov
 Good luck, and Happy Coding.
 
 
-### Points `Total Points: 20`
+### Points `Total Points: 30`
 
  - `5` Utilizes a PlayerService & PlayerController
  - `5` Players can be filtered by Team
  - `5` Players can be filtered by Position
- - `2.5` Players can be added and removed from user team
- - `2.5` User team data is persistent
+ - `5` Players can be filtered by Name
+ - `5` Players can be added and removed from user team
+ - `5` User team data is persistent
 
 
 ### Bonus
   - Only one instance of a player on the team is allowed
   - Teams have a max size 
   - Only one player of each position
-  -
 ---
 
 #Array.Filter
