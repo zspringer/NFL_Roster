@@ -172,7 +172,7 @@ Good luck, and Happy Coding.
  - `5` User team data is persistent
 
 
-### Bonus
+### Bonus (1pt each)
   - Only one instance of a player on the team is allowed
   - Teams have a max size 
   - Only one player of each position
