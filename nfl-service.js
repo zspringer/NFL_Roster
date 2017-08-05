@@ -1,6 +1,8 @@
 function NflService(apiUrl, callback) {
     //Private parts
     var playersData = []
+    //TO DO MAKE A SEPERATE MY TEAM ARRAY AND FILL IT
+    var myTeam = []
 
 
     function loadPlayersData() {
@@ -31,14 +33,12 @@ function NflService(apiUrl, callback) {
         });
     }
 
-
-
-
-
     loadPlayersData()
     console.log(playersData)
 
     //public parts
+
+    this.getPlayer
 
     
 

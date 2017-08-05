@@ -22,10 +22,10 @@ function NflController() {
         var player = playersList[i];
         template += `
             <div class="col-xs-4 player-card">
-                <img src="http://s.nflcdn.com/static/content/public/image/fantasy/transparent/200x200/" alt="nfl player">
-                <div class="player-name">Player Name:</div>
-                <div class="player-position">Player Position:</div>
-                <div class="player-team">Player Team:</div>
+                <img src="${player.photo}" style=height:100px width:100px alt="nfl player">
+                <div class="player-name">Player Name:${player.fullname}</div>
+                <div class="player-position">Player Position:${player.position}</div>
+                <div class="player-team">Player Team:${player.pro_team}</div>
             </div>
         `
         }
@@ -40,7 +40,6 @@ function NflController() {
     this.getPlayer = function getPlayer(e) {
         e.preventDefault();
         var player = e.target.player.value;
-        debugger
         nflService.getPlayer(player).then(drawPlayers);
     }
 
