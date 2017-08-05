@@ -2,3 +2,13 @@
     display: inline-block;
     border: 1px solid black;
 }
+
+.full-page-header{
+    display: inline-block;
+}
+
+.nfl-logo{
+    height: 25px;
+    width: 25px;
+    display: inline-block
+}

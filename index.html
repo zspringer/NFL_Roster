@@ -14,22 +14,74 @@
 <body>
     <div class="container">
         <div class="panel panel-default">
-            <div class="panel-body">My NFL Roster</div>
-            <div class="search-area">
-            <form class="form-inline" onsubmit="app.controllers.nflController.getPlayer(event)">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="player" placeholder="Enter Player Name" />
-                    <button type="submit" class="btn btn-primary" id="get-players-button">Get Players</button>
+            <div class="panel-body">
+                <div class="row entire-page">
+                    <!--Start of header-->
+                    <div class="col-xs-12">
+                        <div class="row full-page-header">
+                            <div class="col-xs-12">
+                                <p>Welcome to the NFL</p>
+                                <img class="nfl-logo" src="https://www.seeklogo.net/wp-content/uploads/2014/10/nfl-logo-National-Football-League.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!--End of header-->
+                    <!--Start of split between full roster and my roster-->
+                    <div class="row">
+                        <!--Start of NFL Roster area-->
+                        <div class="col-xs-8">
+                            <!--Start of header area for NFL Roster-->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h3>NFL Roster</h3>
+                                    <div class="search-area">
+                                        <form class="form-inline" onsubmit="app.controllers.nflController.getPlayer(event)">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="player" placeholder="Enter Player Name" />
+                                                <button type="submit" class="btn btn-primary" id="get-players-button">Get Players</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End of header area for NFL Roster-->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div id="player-roster">
+                                        <!--Entire NFL roster will go here-->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End of NFL Roster-->
+                        <!--Start of My Roster-->
+                        <div class="col-xs-4">
+                            <!--Start of header area for my team-->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <h3>My Team</h3>
+                                </div>
+                            </div>
+                            <!--End of header area for my team-->
+                            <!--Start of area where you build your team-->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="my-team">
+                                        <!--Your team data will go here-->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End of area where you build your team-->
+                        </div>
+                        <!--End of My Roster-->
+                    </div>
                 </div>
-            </form>
-            </div>
-            <div class="my-team">
-
-            </div>
-            <div id="player-roster">
-
             </div>
         </div>
+    </div>
+    </div>
     </div>
 
 
