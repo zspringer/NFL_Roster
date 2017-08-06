@@ -1,6 +1,8 @@
+
 .player-card{
     display: inline-block;
     border: 1px solid black;
+
 }
 
 .full-page-header{
@@ -12,3 +14,16 @@
     width: 25px;
     display: inline-block
 }
+/*Column headers*/
+.column-header-area{
+    border: 2px solid rgb(25, 61, 113);
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.nfl-roster-title{
+    border-right: 2px solid rgb(25, 61, 113);
+}
+
+/*.myteam-roster-title{
+    border: 2px solid rgb(25, 61, 113);
+}*?

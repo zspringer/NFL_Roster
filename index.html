@@ -26,25 +26,42 @@
                         </div>
                     </div>
                     <!--End of header-->
-                    <!--Start of split between full roster and my roster-->
                     <div class="row">
-                        <!--Start of NFL Roster area-->
-                        <div class="col-xs-8">
-                            <!--Start of header area for NFL Roster-->
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h3>NFL Roster</h3>
-                                    <div class="search-area">
-                                        <form class="form-inline" onsubmit="app.controllers.nflController.getPlayer(event)">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="player" placeholder="Enter Player Name" />
-                                                <button type="submit" class="btn btn-primary" id="get-players-button">Get Players</button>
+                        <!--Start of header for Roster and My team-->
+                        <div class="col-xs-12">
+                            <div class="row column-header-area">
+                                <div class="col-xs-8 nfl-roster-title">
+                                    <!--Start of header area for NFL Roster-->
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h3>NFL Roster</h3>
+                                            <div class="search-area">
+                                                <form class="form-inline" onsubmit="app.controllers.nflController.getPlayer(event)">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="player" placeholder="Enter Player Name" />
+                                                        <button type="submit" class="btn btn-primary" id="get-players-button">Get Players</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
+                                    <!--End of header area for NFL Roster-->
+                                </div>
+                                <div class="col-xs-4 myteam-roster-title">
+                                    <!--Start of header area for my team-->
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <h3>My Team</h3>
+                                        </div>
+                                    </div>
+                                    <!--End of header area for my team-->
                                 </div>
                             </div>
-                            <!--End of header area for NFL Roster-->
+                        </div>
+                        <!--End of header for Roster and My team-->
+                        <!--Start of split between full roster and my roster-->
+                        <!--Start of NFL Roster area-->
+                        <div class="col-xs-8">
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div id="player-roster">
@@ -57,13 +74,6 @@
                         <!--End of NFL Roster-->
                         <!--Start of My Roster-->
                         <div class="col-xs-4">
-                            <!--Start of header area for my team-->
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <h3>My Team</h3>
-                                </div>
-                            </div>
-                            <!--End of header area for my team-->
                             <!--Start of area where you build your team-->
                             <div class="row">
                                 <div class="col-xs-12">
@@ -77,6 +87,7 @@
                         </div>
                         <!--End of My Roster-->
                     </div>
+                    <!--End of Row that contains both NFL Roster and My Team-->
                 </div>
             </div>
         </div>
