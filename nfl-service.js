@@ -1,8 +1,8 @@
 function NflService(apiUrl, callback) {
     //Private parts
     var playersData = []
-    //TO DO MAKE A SEPERATE MY TEAM ARRAY AND FILL IT
     var myTeam = []
+
 
     function loadPlayersData() {
 
@@ -37,26 +37,44 @@ function NflService(apiUrl, callback) {
     //public parts
 
 
-    //TODO:   FIX THIS FUNCTION ENTERED SATURDAY.  IT IS NOT PUSHING TO ARRAY
-    this.getAddToMyTeam = function (id) {
+    //Pushes player selected to MyTeam array
+    this.getAddToMyTeam = function (id, callback) {
         //TODO: char might need to be changed to player or player to char
         var player = playersData.find(char => char.id == id)
-        console.log(player)
 
         if (myTeam.indexOf(player) == -1) {
             myTeam.push(player)
-            // for (var i =0; i < playersData.length; i++){
-            //     var player = playersData[i];
-            //     if (player.id === id){
-            //         myTeam.push(player)
-            //     }
-            // }
+            callback(myTeam)
         }
     }
-    
-    // this.getPlayer
 
+    //Removes selected player via the remove button.
+    //Checks to see if the player exists then splices the player from the array
+    //recalls myteam
+    this.getRemoveFromMyTeam = function (id, callback) {
+        var player = playersData.find(char => char.id == id)
+        var position = myTeam.indexOf(player);
+        if (position != -1) {
+            myTeam.splice(position, 1)
+        }
+        callback(myTeam)
+    }
 
+    this.getPlayersByTeam = function (teamName) {
+        playersData.filter(function (player) {
+            if (player.pro_team == teamName) { //added value pro_team instead of team
+                return true;
+            }
+        });
+    }
+
+    this.getPlayersByPosition = function (position) {
+        playersData.filter(function (player) {
+            if (player.position == position) {
+                return true;
+            }
+        });
+    }
 
 
 
