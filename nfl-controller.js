@@ -7,6 +7,7 @@ function NflController() {
 
     //function ready is the callback and is being called above in the NflService as a variable
     function ready(playerList) {
+        debugger
         drawPlayers(playerList, []);//TODO: MAY NEED TO MOVE THE ARRAY
         loading = false; //stop the spinner
 
@@ -14,14 +15,12 @@ function NflController() {
 
     }
 
-    function drawPlayers(playersList) {
-        //var template = ''
+    function drawPlayers(playersList, myTeamList) {
         var playerElem = document.getElementById('player-roster')
-
-
+        playerElem.innerHTML = ''   
         var playerTemplate = ''
 
-
+        //Full player team draw function
         for (var i = 0; i < playersList.length; i++) {
             var player = playersList[i];
             playerTemplate += `
@@ -34,7 +33,28 @@ function NflController() {
             </div>
         `
         }
+
+        //My Team player draw function
+        // var teamElem = document.getElementById('my-team')
+        // teamElem.innerHTML = ''
+        // var myTeamTemplate = ''
+        // if (teamElem === null) {
+        //     return
+        // } else {
+        //     //TODO:  Need to add a remove button when player pushed to my team
+        //     for (var i in myTeamList) {
+        //         var player = myTeamList[i]
+        //         myTeamTemplate += `
+        //     <div class="col-xs-4 player-card">
+        //         <img src="${player.photo}" style=height:100px width:100px alt="nfl player">
+        //         <div class="player-name">Player Name:${player.fullname}</div>
+        //         <div class="player-position">Player Position:${player.position}</div>
+        //         <div class="player-team">Player Team:${player.pro_team}</div>
+        //     `
+        //     }
+        // }
         playerElem.innerHTML = playerTemplate
+        //teamElem.innerHTML = myTeamTemplate
     }
 
     // function drawToMyTeam(myTeamList) {
@@ -63,15 +83,15 @@ function NflController() {
 
     //Search button gets this function first
     this.getPlayer = function getPlayer(e) {
+        debugger
         e.preventDefault();
-        var player = e.target.player.value;
+        var player = e.target.player.value
         nflService.getPlayer(player).then(drawPlayers);
     }
 
-
     this.getPlayersByTeam = function (teamName) {
         playersData.filter(function (player) {
-            if (player.team == teamName) {
+            if (player.pro_team == teamName) { //added value pro_team instead of team
                 return true;
             }
         });
@@ -85,10 +105,12 @@ function NflController() {
         });
     }
 
+
     //TODO:  MAKE A SERVICE FUNCTION THAT DRAWS PLAYER TO MY TEAM ARRAY
     this.getAddToMyTeam = function (id) {
         nflService.getAddToMyTeam(id)
-        drawToMyTeam(id)
+        //drawToMyTeam('',id)
+        drawPlayers(this.getPlayer, this.getAddToMyTeam,)
     }
 
 

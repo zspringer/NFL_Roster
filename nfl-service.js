@@ -4,7 +4,6 @@ function NflService(apiUrl, callback) {
     //TO DO MAKE A SEPERATE MY TEAM ARRAY AND FILL IT
     var myTeam = []
 
-
     function loadPlayersData() {
 
         //Lets check the localstorage for the data before making the call.
@@ -34,31 +33,32 @@ function NflService(apiUrl, callback) {
     }
 
     loadPlayersData()
-    console.log(playersData)
 
     //public parts
 
 
     //TODO:   FIX THIS FUNCTION ENTERED SATURDAY.  IT IS NOT PUSHING TO ARRAY
-    this.getAddToMyTeam = function(id){
+    this.getAddToMyTeam = function (id) {
         //TODO: char might need to be changed to player or player to char
-        // var player = playersData.find(char => char.id == id)
+        var player = playersData.find(char => char.id == id)
+        console.log(player)
 
-        // if(myTeam.indexOf(player) == -1){
-        //     myTeam.push(player)
-        for (var i =0; i < playersData.length; i++){
-            var player = playersData[i];
-            if (player.id === id){
-                myTeam.push(player)
-            }
+        if (myTeam.indexOf(player) == -1) {
+            myTeam.push(player)
+            // for (var i =0; i < playersData.length; i++){
+            //     var player = playersData[i];
+            //     if (player.id === id){
+            //         myTeam.push(player)
+            //     }
+            // }
         }
     }
-
-    this.getPlayer
     
+    // this.getPlayer
 
 
-    
+
+
 
 
 }
