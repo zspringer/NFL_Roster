@@ -7,7 +7,7 @@ function NflController() {
 
     //function ready is the callback and is being called above in the NflService as a variable
     function ready(playerList) {
-        drawPlayers(playerList, []);//TODO: MAY NEED TO MOVE THE ARRAY
+        drawPlayers(playerList);//TODO: MAY NEED TO MOVE THE ARRAY
         loading = false; //stop the spinner
 
         //Now that all of our player data is back we can safely setup our bindings for the rest of the view.
@@ -44,7 +44,6 @@ function NflController() {
         if (myTeamList === null) {
             return
         } else {
-            //TODO:  Need to add a remove button when player pushed to my team
             for (var i in myTeamList) {
                 var player = myTeamList[i]
                 //console.log(player)
@@ -66,10 +65,11 @@ function NflController() {
 
     //Search button gets this function first
     this.getPlayer = function getPlayer(e) {
-        debugger
         e.preventDefault();
-        var player = e.target.player.value
-        nflService.getPlayer(player).then(drawTeam);
+        var name = e.target.player.value.toLowerCase()
+        console.log(name)
+        var list = nflService.getPlayersByName(name);
+        drawPlayers(list)
     }
 
     this.getAddToMyTeam = function (id) {
@@ -77,11 +77,24 @@ function NflController() {
     }
 
     this.getRemoveFromMyTeam = function (id) {
+        
         nflService.getRemoveFromMyTeam(id, drawTeam)
     }
 
-    this.getPlayersByTeam = function (teamName){
-        
+    this.getPlayersByTeam = function getPlayersByTeam(e) {
+        e.preventDefault();
+        var team = e.target.team.value.toLowerCase()
+        console.log(team)
+        var list = nflService.getPlayersByTeam(teamName)
+        drawPlayers(list)
+    }
+
+    this.getPlayersByPosition = function getPlayersByPosition(e){
+        e.preventDefault();
+        var position = e.target.position.value.toLowerCase()
+        console.log(position)
+        var list = nflService.getPlayersByPosition(position)
+        drawPlayers(list)
     }
 
 }

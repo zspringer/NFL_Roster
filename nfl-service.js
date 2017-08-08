@@ -34,6 +34,11 @@ function NflService(apiUrl, callback) {
 
     loadPlayersData()
 
+
+    function saveMyTeam(){
+        localStorage.setItem('myTeam', JSON.stringify(myTeam))
+    }
+
     //public parts
 
 
@@ -46,6 +51,7 @@ function NflService(apiUrl, callback) {
             myTeam.push(player)
             callback(myTeam)
         }
+            saveMyTeam()
     }
 
     //Removes selected player via the remove button.
@@ -61,22 +67,43 @@ function NflService(apiUrl, callback) {
     }
 
     this.getPlayersByTeam = function (teamName) {
-        playersData.filter(function (player) {
-            if (player.pro_team == teamName) { //added value pro_team instead of team
+        var list = playersData.filter(function (player) {
+            if (player.pro_team.toLowerCase() == teamName) { //added value pro_team instead of team
                 return true;
             }
         });
+    }
+
+    this.getPlayersByName = function(playerName){
+        var list = playersData.filter(function (player) {
+            //console.log(player)
+            // if (player.fullname == playerName || player.firstname == playerName|| player.lastname == playerName) { //added value pro_team instead of team
+            //     console.log(player)
+            //     return true;
+            // }
+            if (player.firstname.toLowerCase() == playerName) {
+                console.log(player)
+                return true;
+            }
+            if (player.lastname.toLowerCase() == playerName) {
+                console.log(player)
+                return true;
+            }
+            if (player.fullname.toLowerCase() == playerName) {
+                console.log(player)
+                return true;
+            }
+        });
+        console.log(list)
+        return list
     }
 
     this.getPlayersByPosition = function (position) {
-        playersData.filter(function (player) {
-            if (player.position == position) {
+        var list = playersData.filter(function (player) {
+            if (player.position.toLowerCase() == position) {
                 return true;
             }
         });
+        return list
     }
-
-
-
-
 }

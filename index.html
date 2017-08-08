@@ -43,6 +43,25 @@
                                                     </div>
                                                 </form>
                                             </div>
+                                            <!--Start of dropdown area-->
+                                            <div class="search-area">
+                                                <form class="form-inline" onsubmit="app.controllers.nflController.getPlayersByPosition(event)">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="position" placeholder="Enter Position Name" />
+                                                        <button type="submit" class="btn btn-primary" id="get-position-button">Search</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="search-area">
+                                                <form class="form-inline" onsubmit="app.controllers.nflController.getPlayersByTeam(event)">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" name="team" placeholder="Enter Team Name" />
+                                                        <button type="submit" class="btn btn-primary" id="get-team-button">Search</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!--End of Dropdown area-->
                                         </div>
                                     </div>
                                     <!--End of header area for NFL Roster-->
