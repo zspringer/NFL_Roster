@@ -53,6 +53,7 @@ function NflService(apiUrl, callback) {
         }   return -1
     }
 
+    
     //public parts
 
 
@@ -89,6 +90,9 @@ function NflService(apiUrl, callback) {
                 return true;
             }
         });
+        console.log(list)
+        return list
+        
     }
 
     this.getPlayersByName = function(playerName){

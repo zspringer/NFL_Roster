@@ -61,7 +61,6 @@ function NflController() {
         }
     }
 
-
     //Public parts
 
     //Search button gets this function first
@@ -73,6 +72,7 @@ function NflController() {
         var list = nflService.getPlayersByName(name);
         drawPlayers(list)
         form.reset()
+        
     }
 
     this.getAddToMyTeam = function (id) {
@@ -88,9 +88,10 @@ function NflController() {
         var form = event.target
         var team = e.target.team.value.toLowerCase()
         //console.log(team)
-        var list = nflService.getPlayersByTeam(teamName)
+        var list = nflService.getPlayersByTeam(team)
         drawPlayers(list)
         form.reset()
+
     }
 
     this.getPlayersByPosition = function getPlayersByPosition(e){
