@@ -64,6 +64,7 @@ function NflService(apiUrl, callback) {
             myTeam.splice(position, 1)
         }
         callback(myTeam)
+        saveMyTeam()
     }
 
     this.getPlayersByTeam = function (teamName) {
