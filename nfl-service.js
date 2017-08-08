@@ -11,9 +11,13 @@ function NflService(apiUrl, callback) {
         //we can cut down on the load time by saving and pulling from localstorage 
 
         var localData = localStorage.getItem('playersData');
+        var myTeamData = localStorage.getItem('myTeam')
+        if(myTeamData){
+                myTeam = JSON.parse(myTeamData);
+        }
         if (localData) {
             playersData = JSON.parse(localData);
-            return callback(playersData);
+            return callback(playersData, myTeam);
             //return will short-circuit the loadPlayersData function
             //this will prevent the code below from ever executing
         }
@@ -39,6 +43,16 @@ function NflService(apiUrl, callback) {
         localStorage.setItem('myTeam', JSON.stringify(myTeam))
     }
 
+    function findById(id, arr){
+        for (var i = 0; i < arr.length; i++) {
+            var element = arr[i];
+            if (element.id == id){
+                return element
+            }
+        
+        }   return -1
+    }
+
     //public parts
 
 
@@ -49,22 +63,24 @@ function NflService(apiUrl, callback) {
 
         if (myTeam.indexOf(player) == -1) {
             myTeam.push(player)
+            saveMyTeam()
             callback(myTeam)
         }
-            saveMyTeam()
     }
 
     //Removes selected player via the remove button.
     //Checks to see if the player exists then splices the player from the array
     //recalls myteam
     this.getRemoveFromMyTeam = function (id, callback) {
-        var player = playersData.find(char => char.id == id)
-        var position = myTeam.indexOf(player);
+        var player = myTeam.find(char => char.id == id)
+        //console.log(player)
+        var position = myTeam.indexOf(player)
         if (position != -1) {
             myTeam.splice(position, 1)
         }
-        callback(myTeam)
+        debugger
         saveMyTeam()
+        callback(myTeam)
     }
 
     this.getPlayersByTeam = function (teamName) {

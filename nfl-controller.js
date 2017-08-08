@@ -6,8 +6,9 @@ function NflController() {
 
 
     //function ready is the callback and is being called above in the NflService as a variable
-    function ready(playerList) {
-        drawPlayers(playerList);//TODO: MAY NEED TO MOVE THE ARRAY
+    function ready(playerList, myTeam) {
+        drawPlayers(playerList);
+        drawTeam(myTeam)
         loading = false; //stop the spinner
 
         //Now that all of our player data is back we can safely setup our bindings for the rest of the view.
@@ -79,7 +80,6 @@ function NflController() {
     }
 
     this.getRemoveFromMyTeam = function (id) {
-        
         nflService.getRemoveFromMyTeam(id, drawTeam)
     }
 
@@ -87,7 +87,7 @@ function NflController() {
         e.preventDefault();
         var form = event.target
         var team = e.target.team.value.toLowerCase()
-        console.log(team)
+        //console.log(team)
         var list = nflService.getPlayersByTeam(teamName)
         drawPlayers(list)
         form.reset()
