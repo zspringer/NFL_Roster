@@ -49,7 +49,6 @@ function NflController() {
                 var player = myTeamList[i]
                 //console.log(player)
                 myTeamTemplate += `
-            <div class="col-xs-4 player-card">
                 <img src="${player.photo}" style=height:100px width:100px alt="nfl player">
                 <div class="player-name">Player Name:${player.fullname}</div>
                 <div class="player-position">Player Position:${player.position}</div>
