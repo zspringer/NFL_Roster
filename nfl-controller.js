@@ -6,8 +6,8 @@ function NflController() {
 
 
     //function ready is the callback and is being called above in the NflService as a variable
-    function ready(playerList, myTeam) {
-        drawPlayers(playerList);
+    function ready(playersList, myTeam) {
+        drawPlayers(playersList);
         drawTeam(myTeam)
         loading = false; //stop the spinner
 

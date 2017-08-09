@@ -52,7 +52,6 @@ function NflService(apiUrl, callback) {
         
         }   return -1
     }
-
     
     //public parts
 
@@ -61,7 +60,9 @@ function NflService(apiUrl, callback) {
     this.getAddToMyTeam = function (id, callback) {
         //TODO: char might need to be changed to player or player to char
         var player = playersData.find(char => char.id == id)
-
+        if(myTeam.length >= 12){
+            return
+        }
         if (myTeam.indexOf(player) == -1) {
             myTeam.push(player)
             saveMyTeam()
@@ -79,7 +80,6 @@ function NflService(apiUrl, callback) {
         if (position != -1) {
             myTeam.splice(position, 1)
         }
-        debugger
         saveMyTeam()
         callback(myTeam)
     }
@@ -127,4 +127,6 @@ function NflService(apiUrl, callback) {
         });
         return list
     }
+
+
 }
